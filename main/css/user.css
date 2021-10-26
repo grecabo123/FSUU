@@ -1,0 +1,185 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+body{
+	width: 100%;
+}
+html{
+	height: 100%;
+	background-color: #f3f5f9;
+}
+.content{
+	display: flex;
+	position: relative;
+}
+.content .sidebar{
+	width: 210px;
+	height: 100%;
+	background: #131949;
+	padding: 30px 0px;
+	position: fixed;
+}
+.sidebar h2{
+	color: white;
+	text-transform: capitalize;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.sidebar ul li{
+	list-style-type: none;
+	padding: 15px;
+
+  	border-bottom: 1px solid #bdb8d7;
+  	border-bottom: 1px solid rgba(0,0,0,0.05);
+  	border-top: 1px solid rgba(255,255,255,0.05);
+}
+.sidebar a span{
+	font-size: 18px;
+	color: white;
+}
+.sidebar ul li a{
+	/*text-align: c*/
+	text-decoration: none;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	width: 30px;
+}
+.main_content{
+	width: 100%;
+	padding: 20px;
+  	background: #fff;
+  	color: #717171;
+  	margin-left: 200px;
+  	border-bottom: 1px solid #e0e4e8;
+}
+.info{
+	line-height: 20px;
+	margin: 20px;
+	color: #717171;
+	width: 100%;
+}
+.info p{
+	font-size: 18px;
+	text-align: justify;
+	line-height: 30px;
+	font-family: 'Open Sans', sans-serif;
+}
+.header p{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+}
+.header{
+	padding: 20px;
+	background-color: white;
+	color: #717171;
+  	border-bottom: 1px solid #e0e4e8; 
+}
+.header span{
+	font-size: 19px;
+	font-family: 'Roboto', sans-serif;
+}
+form{
+	color: black;
+}
+.form-grad,.lahi{
+	display: none;
+	background-color: #8699ab;
+	border-radius: 10px;
+}
+.graduate-form,.title-form{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box-size{
+	width: 100%;
+	padding: 10px 5px;
+}
+.title-form ul li{
+	display: block;
+	margin: 10px 0px;
+	list-style-type: none;
+}
+.date{
+	padding-right: 10px;
+	float: right;
+}
+#title-course{
+	text-align: center;
+	font-size: 20px;
+	color: black;
+	letter-spacing: 2px;
+	font-family: 'Roboto', sans-serif;
+}
+#app{
+	-webkit-text-stroke-width: 0.5px;
+	font-size: 25px;
+	color: black;
+	font-family: 'Roboto', sans-serif;
+}
+#fssu{
+	text-transform: capitalize;
+	font-size: 25px;
+}
+.user-info{
+	width: 300px;
+	max-width: 100%;
+	display: flex;
+	flex-flow: column wrap;
+	margin: 6px 0px;
+	line-height: 20px;
+}
+.name{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.user-info > label{
+	font-family: 'Open Sans', sans-serif;
+	color: #323131;
+	font-size: 19px;
+}
+input[type=date]{
+	width: 200px;
+	padding: 5px 20px;
+	border-radius: 50px;
+	outline: none;
+	border: 3px solid pink;
+	background-color: #ffffff;
+}
+input[type=text]{
+	padding: 7px 20px;
+	width: 250px;
+	max-width: 100%;
+	font-size: 16px;
+	border-radius: 50px;
+	transition: 0.5s;
+	outline: none;
+	border: 3px solid pink;
+	background-color: #ffffff;
+}
+input[type=text]:focus,input[type=date]:focus{
+	border: 0.5px solid #7FA6EE;
+  	box-shadow: 0 0 4px #5F8FE8;
+	outline: none !important;
+}
+.btn button{
+	position: relative;
+	width: 250px;
+	max-width: 100%;
+	padding: 8px 20px;
+	font-size: 18px;
+	border-radius: 6px;
+	border: none;
+	cursor: pointer;
+	background-color: #c8cd54;
+}
+h3{
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 2px;
+	font-size: 19px;
+	color: #181818;
+}

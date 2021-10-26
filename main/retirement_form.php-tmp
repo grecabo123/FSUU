@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/student.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap" rel="stylesheet">
+    <link rel="icon" type="icon/png" href="image/fsuulogo.jpeg" sizes="10x10">
+    <script type="text/javascript" src="js/fontawesome.js"></script>
+</head>
+<body>
+
+<!-- header -->
+    <div class="box">
+        <header>
+            <div class="flex">
+                <div class="title">
+                    <div class="head">
+                        <a href="index"><img src="image/fsuu.png" alt="Logo"><span></span></a>
+                    </div>
+                </div>
+                <div class="box-width">
+                    <h3>Sign Up</h3>
+                </div>
+            </div>
+        </header>
+    </div>
+    <hr>
+    <!-- end of header -->
+
+    <!-- selection form -->
+    <div class="option">
+        <div class="select">
+            <ul>
+                <li><label for="">Select Form</label></li>
+                <li><select name="" id="">
+                <option value="">Teaching Personnel</option>
+                <option value="">Non-Teaching Personnel</option>
+            </select></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end of selection form -->
+
+    <!-- form -->
+
+    <div class="student">
+        <section>
+            <form action="">
+                <center><h3>Clearance or Separation from Employment</h3></center>
+                <br>
+                <div class="family_name">
+                    <div class="fname">
+                        <label for="">Name of Employee</label>
+                        <input type="text" placeholder="Name of Employee" name="fname" autocomplete="off">
+
+                        <label for="">Program/Officee</label>
+                        <input type="text" placeholder="Program/Officer" name="fname" autocomplete="off">
+
+                        <label for="">Position/Status</label>
+                        <input type="text" placeholder="Position/Status" name="fname" autocomplete="off">
+
+                        <label for="">Date Employed</label>
+                        <input type="text" placeholder="Date Employed" name="fname" autocomplete="off">
+
+                        <label for="">Date of Separation</label>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nam praesentium voluptatibus mollitia, facere esse laborum explicabo amet accusamus, inventore adipisci blanditiis architecto molestias. Eaque, voluptatibus? Fugit dolores, libero aperiam.<input type="text" placeholder="Date of Separation" name="fname" autocomplete="off"></p>
+                    </div>
+                </div>
+
+                <p>
+                     <div class="fname">
+                        This is to certify
+                        <input type="text" placeholder="Name of Employee" name="fname" autocomplete="off"> is cleared of any accountability with the offices enumerated below.
+                     </div>
+                </p>
+                <br>
+                <br>
+                <br>
+
+                <div class="btn">
+                    <center><button>Submit</button></center>
+                </div>
+            </form>
+        </section>
+    </div>
+
+
+
+    <!-- for form -->
+
+        <p>
+            <div class="fname">
+                Requested by:
+                <input type="text" placeholder="" name="fname" autocomplete="off">
+            </div>
+
+            <div class="fname">
+                 Date issued:
+                <input type="text" placeholder="" name="fname" autocomplete="off">
+            </div>
+             <div class="fname">
+                 Date Accomplished:
+                <input type="text" placeholder="" name="fname" autocomplete="off">
+            </div>
+
+        </p>
+
+    <!-- footer -->
+
+    <div class="footer">
+        <footer>
+            <div class="foot">
+                <div class="flex">
+                    <div class="all-right-reserve">
+                        <span>© {2020} All Rights Reserved</span>
+                    </div>
+                    <div class="term">
+                        <div class="flex">
+                            <div class="term-text">
+                                <ul>
+                                    <li><a href="">Terms & Conditions</a></li>
+                                </ul>
+                            </div>
+                            <div class="privacy">
+                                <ul>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- end of footer -->
+
+
+</body>
+</html>
