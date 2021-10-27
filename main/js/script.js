@@ -1,11 +1,17 @@
 $(document).ready(function(){
-	$('#form-grad').click(function(){
-		$('.form-grad').toggle();
-		// alert("wad");
-		$('.lahi').fadeOut();
+	$('#form').click(function(){
+		$('.form-grad').toggle(100);
+		$('.form-grad-course').hide();
 	});
-	$('#form-lahi').click(function(){
-		$('.lahi').toggle();
-		$('.form-grad').fadeOut();
+	$('#form-grad-course').click(function(){
+		$('.form-grad-course').toggle(100);
+		$('.form-grad').hide();
 	});
+	$('#view').click(function(){
+		$('.view-data').toggle(200);
+	});
+	$('#close').click(function(){
+		$('.view-data').hide();
+	});
+	
 });

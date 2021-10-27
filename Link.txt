@@ -1,0 +1,4 @@
+Admin: http://localhost/FSUU_THESIS-main/main/admin/admin
+
+
+User: http://localhost/FSUU_THESIS-main/main/index

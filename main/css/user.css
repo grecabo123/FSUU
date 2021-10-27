@@ -2,7 +2,6 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	text-decoration: none;
 }
 body{
 	width: 100%;
@@ -16,7 +15,7 @@ html{
 	position: relative;
 }
 .content .sidebar{
-	width: 210px;
+	width: 150px;
 	height: 100%;
 	background: #131949;
 	padding: 30px 0px;
@@ -36,10 +35,6 @@ html{
   	border-bottom: 1px solid rgba(0,0,0,0.05);
   	border-top: 1px solid rgba(255,255,255,0.05);
 }
-.sidebar a span{
-	font-size: 18px;
-	color: white;
-}
 .sidebar ul li a{
 	/*text-align: c*/
 	text-decoration: none;
@@ -52,7 +47,7 @@ html{
 	padding: 20px;
   	background: #fff;
   	color: #717171;
-  	margin-left: 200px;
+  	margin-left: 140px;
   	border-bottom: 1px solid #e0e4e8;
 }
 .info{
@@ -60,6 +55,7 @@ html{
 	margin: 20px;
 	color: #717171;
 	width: 100%;
+	padding-right: 37px;
 }
 .info p{
 	font-size: 18px;
@@ -84,19 +80,31 @@ html{
 form{
 	color: black;
 }
-.form-grad,.lahi{
+
+
+
+/*form*/
+.form-grad,.form-grad-course{
 	display: none;
-	background-color: #8699ab;
-	border-radius: 10px;
 }
 .graduate-form,.title-form{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.box-size{
-	width: 100%;
-	padding: 10px 5px;
+.box_size{
+	width: auto;
+	max-width: 100%;
+	height: auto;
+	/*background-color: red;*/
+}
+.box_size ul li{
+	list-style-type: none;
+	margin: 10px 0px;
+}
+.box_size ul li  span{
+	font-size: 18px;
+	font-family: 'Roboto', sans-serif;
 }
 .title-form ul li{
 	display: block;
@@ -137,28 +145,20 @@ form{
 	justify-content: space-between;
 	align-items: center;
 }
-.user-info > label{
+.user-info > label,.id-number > span{
 	font-family: 'Open Sans', sans-serif;
 	color: #323131;
 	font-size: 19px;
 }
-input[type=date]{
-	width: 200px;
-	padding: 5px 20px;
-	border-radius: 50px;
-	outline: none;
-	border: 3px solid pink;
-	background-color: #ffffff;
-}
-input[type=text]{
+input[type=text],input[type=date]{
 	padding: 7px 20px;
 	width: 250px;
 	max-width: 100%;
 	font-size: 16px;
-	border-radius: 50px;
+	border-radius: 10px;
 	transition: 0.5s;
 	outline: none;
-	border: 3px solid pink;
+	border: 0.1px solid #605c5c;
 	background-color: #ffffff;
 }
 input[type=text]:focus,input[type=date]:focus{
@@ -175,11 +175,30 @@ input[type=text]:focus,input[type=date]:focus{
 	border-radius: 6px;
 	border: none;
 	cursor: pointer;
-	background-color: #c8cd54;
+	background-color: #2e8538;
+	color: white;
 }
 h3{
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 2px;
 	font-size: 19px;
 	color: #181818;
+}
+.submit{
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+.submit_box{
+	padding: 6px 20px;
+	border-radius: 5px;
+	background-color: green;
+}
+.submit_box p{
+	font-size: 17px;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+}
+.display{
+	/*display: none;*/
 }

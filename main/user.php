@@ -84,13 +84,13 @@
 
             <div class="content">
                 <div class="sidebar">
-                    <a href="user" style="text-decoration: none;"><center><img src="image/1.png" alt="Logo" width="150" height="100"></center><center><span>FATHER SATURNINO URIOS UNIVERSITY</span></center></a>
+                    <a href="user" style="text-decoration: none;"><center><img src="image/1.png" alt="Logo" width="100" height="80"></center><center><span style="color: white; letter-spacing: 2px; font-size: 14px;">FATHER SATURNINO URIOS UNIVERSITY</span></center></a>
                     <ul>
                         <!-- <li><a href="#">Home</a></li> -->
                         <li><a href="#">Notification</a></li>
-                        <li><a id="form-grad" style="cursor: pointer;">Applied Graduate Course</a></li> 
+                         <li><a id="form" style="cursor: pointer;">Form</a></li> 
                         <li><a href="#">Action Done</a></li>
-                        <li><a id="form-lahi" style="cursor: pointer;">Application Form</a></li>
+                        <li><a id="form-grad-course" style="cursor: pointer;">Document</a></li>
                         <li><a href="#">Resources</a></li>
                         <li><a href="logout">Logout</a></li>
                     </ul> 
@@ -101,15 +101,19 @@
                     </div> 
                       <?php  
 
-                        if (isset($_GET['submit'])) {
-                            if ($_GET['submit'] == "success") {
+                        if (isset($_GET['form'])) {
+                            if ($_GET['form'] == "submitted") {
                                 ?>
-                                <script type="text/javascript">
-                                    alert("Your Form has been Submitted");
-                                </script>
+                                <div class="display">
+                                    <div class="submit">
+                                        <div class="submit_box">
+                                            <p>Form has been submitted</p>
+                                        </div>
+                                    </div>
+                                </div>
                                 <?php
                             }
-                            else if($_GET['submit'] == "failed"){
+                            else if($_GET['form'] == "failed"){
                                 ?>
                                 <center><p style="color: red;font-size: 17px;">Failed to submit</p></center>
                                 <?php
@@ -117,428 +121,347 @@
                         }
 
                         ?> 
-                    <div class="info">
-                         <div class="form-grad">
+        <div class="info">
+             <!-- collegiate Form -->
+                <div class="form-grad">
                     <div class="graduate-form">
-              <div class="box-size">
-                <form action="submit" method="post">
-                    <div class="title-form">
-                        <ul>
-                            <li><center><span id="fssu">father saturnino urios university</span></center></li>
-                            <li><center><span id="app">Application Form</span></center></li>
-                            <li><center><span id="title-course">Graduate Course</span></center></li>
-                        </ul>
-                    </div>
-                    <div class="date">
-                        <input type="date" name="date">
-                    </div>
-                    <br>
-                    <div class="id-number">
-
-                        <input type="hidden" name="pk" value="<?php echo $user_id; ?>">
-                        <span>ID Number: <input type="text" name="id"></span>
-                    </div>
-                    <!-- user information -->
-                    <div class="user-info">
-                        <label for="">
-                            Course
-                        </label>
-                       <input type="text" placeholder="Course" name="lname" value="<?php echo $user_course; ?>">
-                    </div>
-                    <center><h3>Personal Information</h3></center>
-                    <div class="name">
+                      <div class="box-size">
+                        <form action="submit" method="post">
+                            <div class="box_size">
+                            <ul>
+                                <li><center><h3>Father Saturnino Urios University</h3></center></li>
+                                <li><center><span>Collegiate Form</span></center></li>
+                            </ul>
+                            </div>
+                        <div class="date">
+                            <input type="hidden" name="pk" value="<?php echo $user_id; ?>">
+                            <!-- <input type="date" name="date"> -->
+                        </div>
+                        <br>
+                        <div class="id-number" style="float: right;">
+                            <input type="hidden" name="email" value="<?php echo $user_email; ?>">
+                            <span>ID Number: <input type="text" required name="student_number"></span>
+                        </div>
+                        <br>
+                        <!-- user information -->
                         <div class="user-info">
                             <label for="">
-                                First Name
+                                Course
                             </label>
-                            <input type="text" placeholder="First Name" name="fname" value="<?php echo $user_fname; ?>">
+                            <input type="text" placeholder="Course" required name="course">
+                        </div>
+                        <br>
+                        <center><h3>Personal Information</h3></center>
+                        <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                    First Name
+                                </label>
+                                <input type="text" name="fname" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Middle Name
+                                </label>
+                                <input type="text" name="mname" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Last Name
+                                </label>
+                                <input type="text" name="lname" required>
+                            </div>
+                        </div>
+                        <!-- <hr> -->
+                        <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                    Date of Birth
+                                </label>
+                                <input type="text" name="birthdate" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Place of Birth
+                                </label>
+                                <input type="text" name="place_birth" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Citizenship
+                                </label>
+                                <input type="text" name="citizenship" required>
+                            </div>
+                        </div>
+                         <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                    Sex
+                                </label>
+                                <input type="text" name="gender" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Civil Status
+                                </label>
+                                <input type="text" name="cstatus" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Name of Spouse if Married
+                                </label>
+                                <input type="text" name="spouse" required>
+                            </div>
                         </div>
                         <div class="user-info">
-                            <label for="">
-                                Middle Name
-                            </label>
-                           <input type="text" placeholder="Middle Name" name="mname" value="<?php echo $user_mname;  ?>">
+                                <label for="">
+                                    Home Address
+                                </label>
+                                <input type="text" name="home_address" required>
+                            </div>
+                            <hr>
+                        <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   Father's Name
+                                </label>
+                                <input type="text" name="father_name" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Mother's Name
+                                </label>
+                                <input type="text" name="mother_name" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                   Parent Address
+                                </label>
+                                <input type="text" name="parent_address" required>
+                            </div>
                         </div>
-                        <div class="user-info">
-                            <label for="">
-                                Last Name
-                            </label>
-                             <input type="text" placeholder="PSA/NSO Birth Certificate-Family Name" name="lname" value="<?php echo $user_lname; ?>">
+                        <br>
+                        <center><h3>Education Background</h3></center>
+                         <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   Elementary School Graduated
+                                </label>
+                                <input type="text" name="eschool" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                  Year Graduated
+                                </label>
+                                <input type="text" name="eyear" required>
+                            </div>
                         </div>
-                    </div>
-                    <!-- <hr> -->
-                    <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                                Date of Birth
-                            </label>
-                           <input type="text" placeholder="Date of Birth" name="birthdate" value="<?php echo $user_Birthdate;  ?>">
+                         <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   High School Graduated
+                                </label>
+                                <input type="text" name="hschool" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                   Year Graduated
+                                </label>
+                                <input type="text" name="hyear" required>
+                            </div>
                         </div>
-                        <div class="user-info">
-                            <label for="">
-                                Place of Birth
-                            </label>
-                            <input type="text" placeholder="Place of Birth" name="place_birth" value="<?php echo $user_Birthplace;  ?>" >
+                        <div class="btn">
+                            <center><button type="submit" name="Submit">Submit Form</button></center>
                         </div>
-                        <div class="user-info">
-                            <label for="">
-                                Citizenship
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                    </div>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                                Sex
-                            </label>
-                            <input type="text" name="sex" value="<?php echo $user_gender; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Civil Status
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Name of Spouse if Married
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                    </div>
-                    <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                                Religion
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Contact Number
-                            </label>
-                            <input type="text" placeholder="Contact Number" name="contact" value="<?php echo $user_contact; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Email Address
-                            </label>
-                            <input type="text" placeholder="Email Address" name="email" value="<?php echo $user_email; ?>">
-                        </div>
-                    </div>
-                    <div class="user-info">
-                            <label for="">
-                                Home Address
-                            </label>
-                           <input id="home" type="text" placeholder="Home Address" name="home_address" value="<?php echo $user_city; ?>">
-                        </div>
-                        <hr>
-                    <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Father's Name
-                            </label>
-                             <input type="text" placeholder="Father's Name" name="father_name" value="<?php echo $user_father_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Mother's Name
-                            </label>
-                           <input type="text" placeholder="Mother's Name" name="mother_name" value="<?php echo $user_mother_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Parent Address
-                            </label>
-                            <input type="text" placeholder="Address" name="parent_address"  value="<?php echo $user_parent_address; ?>">
-                        </div>
-                    </div>
-                    <br>
-                    <center><h3>Education Background</h3></center>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Elementary School Graduated
-                            </label>
-                            <input type="text" placeholder="Elementary School Graduated" name="eschool" value="<?php echo $user_elementary_school_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                              Year Graduated
-                            </label>
-                            <input type="text" placeholder="Year Graduated" name="eyear" value="<?php echo $user_elementary_year_graduated; ?>">
-                        </div>
-                    </div>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               High School Graduated
-                            </label>
-                            <input type="text" placeholder="High School Graduated" name="hschool" value="<?php echo $user_high_school_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Year Graduated
-                            </label>
-                             <input type="text" placeholder="Year Graduated" name="hyear" value="<?php echo $user_high_year_graduated; ?>">
-                        </div>
-                    </div>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Tertiary Graduated
-                            </label>
-                            <input type="text" placeholder="Tertiary Graduated" name="tgrad" value="<?php echo $user_tertiary_school_name ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Year Graduated
-                            </label>
-                            <input type="text" placeholder="Year Graduated" name="tyear" value="<?php echo $user_tertiary_year_graduated; ?>">
-                        </div>
-                    </div>
-                      <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Post Graduate
-                            </label>
-                             <input type="text" placeholder="Post Graduated" name="pgrad" value="<?php echo $user_post_school_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Year Graduated
-                            </label>
-                             <input type="text" placeholder="Year Graduated" name="pyear" value="<?php echo $user_post_year_graduated; ?>">
-                        </div>
-                    </div>
-
-                  
-                    <div class="btn">
-                        <center><button type="submit" name="Submit">Submit</button></center>
-                    </div>
-                    <!-- end of user information -->
-                </form>
-              </div>  
-            </div>
-            </div>
-                  </div>
-                        <!-- lahi nga form -->
-
-                 <div class="lahi">
-                    <div class="graduate-form">
-              <div class="box-size">
-                <form action="submit" method="post">
-                    <div class="title-form">
-                        <ul>
-                            <li><center><span id="fssu">father saturnino urios university</span></center></li>
-                            <li><center><span id="app">Lahi Form</span></center></li>
-                            <li><center><span id="title-course">Graduate nata</span></center></li>
-                        </ul>
-                    </div>
-                    <div class="date">
-                        <input type="date" name="date">
-                    </div>
-                    <br>
-                    <div class="id-number">
-
-                        <input type="hidden" name="pk" value="<?php echo $user_id; ?>">
-                        <span>ID Number: <input type="text" name="id"></span>
-                    </div>
-                    <!-- user information -->
-                    <div class="user-info">
-                        <label for="">
-                            Course
-                        </label>
-                       <input type="text" placeholder="Course" name="lname" value="<?php echo $user_course; ?>">
-                    </div>
-                    <center><h3>Personal Information</h3></center>
-                    <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                                First Name
-                            </label>
-                            <input type="text" placeholder="First Name" name="fname" value="<?php echo $user_fname; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Middle Name
-                            </label>
-                           <input type="text" placeholder="Middle Name" name="mname" value="<?php echo $user_mname;  ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Last Name
-                            </label>
-                             <input type="text" placeholder="PSA/NSO Birth Certificate-Family Name" name="lname" value="<?php echo $user_lname; ?>">
-                        </div>
-                    </div>
-                    <!-- <hr> -->
-                    <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                                Date of Birth
-                            </label>
-                           <input type="text" placeholder="Date of Birth" name="birthdate" value="<?php echo $user_Birthdate;  ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Place of Birth
-                            </label>
-                            <input type="text" placeholder="Place of Birth" name="place_birth" value="<?php echo $user_Birthplace;  ?>" >
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Citizenship
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                    </div>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                                Sex
-                            </label>
-                            <input type="text" name="sex" value="<?php echo $user_gender; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Civil Status
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Name of Spouse if Married
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                    </div>
-                    <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                                Religion
-                            </label>
-                            <input type="text" name="nam">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Contact Number
-                            </label>
-                            <input type="text" placeholder="Contact Number" name="contact" value="<?php echo $user_contact; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Email Address
-                            </label>
-                            <input type="text" placeholder="Email Address" name="email" value="<?php echo $user_email; ?>">
-                        </div>
-                    </div>
-                    <div class="user-info">
-                            <label for="">
-                                Home Address
-                            </label>
-                           <input id="home" type="text" placeholder="Home Address" name="home_address" value="<?php echo $user_city; ?>">
-                        </div>
-                        <hr>
-                    <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Father's Name
-                            </label>
-                             <input type="text" placeholder="Father's Name" name="father_name" value="<?php echo $user_father_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                                Mother's Name
-                            </label>
-                           <input type="text" placeholder="Mother's Name" name="mother_name" value="<?php echo $user_mother_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Parent Address
-                            </label>
-                            <input type="text" placeholder="Address" name="parent_address"  value="<?php echo $user_parent_address; ?>">
-                        </div>
-                    </div>
-                    <br>
-                    <center><h3>Education Background</h3></center>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Elementary School Graduated
-                            </label>
-                            <input type="text" placeholder="Elementary School Graduated" name="eschool" value="<?php echo $user_elementary_school_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                              Year Graduated
-                            </label>
-                            <input type="text" placeholder="Year Graduated" name="eyear" value="<?php echo $user_elementary_year_graduated; ?>">
-                        </div>
-                    </div>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               High School Graduated
-                            </label>
-                            <input type="text" placeholder="High School Graduated" name="hschool" value="<?php echo $user_high_school_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Year Graduated
-                            </label>
-                             <input type="text" placeholder="Year Graduated" name="hyear" value="<?php echo $user_high_year_graduated; ?>">
-                        </div>
-                    </div>
-                     <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Tertiary Graduated
-                            </label>
-                            <input type="text" placeholder="Tertiary Graduated" name="tgrad" value="<?php echo $user_tertiary_school_name ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Year Graduated
-                            </label>
-                            <input type="text" placeholder="Year Graduated" name="tyear" value="<?php echo $user_tertiary_year_graduated; ?>">
-                        </div>
-                    </div>
-                      <div class="name">
-                        <div class="user-info">
-                            <label for="">
-                               Post Graduate
-                            </label>
-                             <input type="text" placeholder="Post Graduated" name="pgrad" value="<?php echo $user_post_school_name; ?>">
-                        </div>
-                        <div class="user-info">
-                            <label for="">
-                               Year Graduated
-                            </label>
-                             <input type="text" placeholder="Year Graduated" name="pyear" value="<?php echo $user_post_year_graduated; ?>">
-                        </div>
-                    </div>
-
-                  
-                    <div class="btn">
-                        <center><button type="submit" name="Submit">Submit</button></center>
-                    </div>
-                    <!-- end of user information -->
-                </form>
-              </div>  
-            </div>
-            </div>
-                  </div>
+                    </form>
                 </div>
             </div>
+        </div>
+        <!-- end of collegiate form -->
 
-            <!-- end of lahi nga form -->
 
+        <!-- Graduate course -->
+           <div class="form-grad-course">
+                    <div class="graduate-form">
+                      <div class="box-size">
+                        <form action="" method="post">
+                            <div class="box_size">
+                            <ul>
+                                <li><center><h3>Father Saturnino Urios University</h3></center></li>
+                                <li><center><span>Graduate Course</span></center></li>
+                            </ul>
+                            </div>
+                        <div class="date">
+                            <input type="date" name="date" required>
+                        </div>
+                        <br>
+                        <div class="id-number">
+                            <span>ID Number: <input type="text" name="student_number"></span>
+                        </div>
+                        <!-- user information -->
+                        <div class="user-info">
+                            <label for="">
+                                Course
+                            </label>
+                            <input type="text" placeholder="Course" name="nam" required>
+                        </div>
+                        <center><h3>Personal Information</h3></center>
+                        <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                    First Name
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Middle Name
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Last Name
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                        <!-- <hr> -->
+                        <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                    Date of Birth
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Place of Birth
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Citizenship
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                         <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                    Sex
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Civil Status
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Name of Spouse if Married
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                        <div class="user-info">
+                                <label for="">
+                                    Home Address
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <hr>
+                        <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   Father's Name
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                    Mother's Name
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                   Parent Address
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                        <br>
+                        <center><h3>Education Background</h3></center>
+                         <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   Elementary School Graduated
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                  Year Graduated
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                         <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   High School Graduated
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                   Year Graduated
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                         <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   Tertiary Graduated
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                   Year Graduated
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                          <div class="name">
+                            <div class="user-info">
+                                <label for="">
+                                   Post Graduate
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                            <div class="user-info">
+                                <label for="">
+                                   Year Graduated
+                                </label>
+                                <input type="text" name="nam" required>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <center><button>Submit Form</button></center>
+                        </div>
+                    </form>
                 </div>
-
             </div>
+        </div>
 
+        </div>
+                  
       
         <?php
     }
