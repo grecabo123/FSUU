@@ -29,11 +29,18 @@
 	$pgrad = mysqli_real_escape_string($conn,$_POST['pgrad']);
 	$pyear = mysqli_real_escape_string($conn,$_POST['pyear']);
 
+	$error = array(
+		'email' => 'Email must be urios email',
+		'password' => 'Wrong Password'
 
+	);
+
+	$error['email'];
 
 	if (isset($_POST['Register'])) {
 		if (empty($mname)  || empty($gender) || empty($birthdate) || empty($place_birth) || empty($contact)) {
 			header("location: form?empty=failed");
+			exit();
 		}
 		else{
 			$hash = "";

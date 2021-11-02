@@ -78,6 +78,7 @@
                 <link rel="stylesheet" href="css/user.css">
                 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
                 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+                <script type="text/javascript" src="js/fontawesome.js"></script>
                 <!-- <link rel="stylesheet" href="css/form_box.css"> -->
             </head>
             <body>
@@ -87,10 +88,17 @@
                     <a href="user" style="text-decoration: none;"><center><img src="image/1.png" alt="Logo" width="100" height="80"></center><center><span style="color: white; letter-spacing: 2px; font-size: 14px;">FATHER SATURNINO URIOS UNIVERSITY</span></center></a>
                     <ul>
                         <!-- <li><a href="#">Home</a></li> -->
-                        <li><a href="#">Notification</a></li>
-                         <li><a id="form" style="cursor: pointer;">Form</a></li> 
+                        <li><a href="#">Account</a></li>
+                        <li><a id="forms" style="cursor: pointer;">Forms&nbsp <span id="up"><i class="fas fa-angle-down"></i></span></a>
+                            <div class="form-application">
+                                <ul>
+                                    <li><a id="form-grad-course" style="cursor: pointer; font-size: 14px;">Graduation Form</a></li>
+                                    <li><a id="form" style="cursor: pointer;">Collegiate Form</a></li> 
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Message</a></li>
                         <li><a href="#">Action Done</a></li>
-                        <li><a id="form-grad-course" style="cursor: pointer;">Document</a></li>
                         <li><a href="#">Resources</a></li>
                         <li><a href="logout">Logout</a></li>
                     </ul> 
@@ -140,7 +148,7 @@
                         <br>
                         <div class="id-number" style="float: right;">
                             <input type="hidden" name="email" value="<?php echo $user_email; ?>">
-                            <span>ID Number: <input type="text" required name="student_number"></span>
+                            <span>ID Number: <input type="text" required name="student_number" maxlength="11"></span>
                         </div>
                         <br>
                         <!-- user information -->

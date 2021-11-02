@@ -15,7 +15,7 @@ html{
 	position: relative;
 }
 .content .sidebar{
-	width: 150px;
+	width: 160px;
 	height: 100%;
 	background: #131949;
 	padding: 30px 0px;
@@ -199,6 +199,23 @@ h3{
 	color: white;
 	font-family: 'Open Sans', sans-serif;
 }
+
 .display{
 	/*display: none;*/
+}
+
+.form-application{
+	display: none;
+}
+.form-application.show{
+	display: block;
+}
+#up{
+	position: absolute;
+	left: 70px;
+}
+#up.rotate{
+	left: 70px;
+	top: 37%;
+	transform: translateY(-10%) rotate(-180deg);
 }

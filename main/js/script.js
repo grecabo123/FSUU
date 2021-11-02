@@ -13,5 +13,11 @@ $(document).ready(function(){
 	$('#close').click(function(){
 		$('.view-data').hide();
 	});
+
+	$('#forms').click(function(event) {
+		$('.form-application').toggleClass('show');
+		$('#up').toggleClass('rotate');
+	});
+	
 	
 });

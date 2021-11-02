@@ -1,3 +1,24 @@
+<?php  
+
+    include '../connector/connect.php';
+
+    if (isset($_POST['view'])) {
+        $key = mysqli_real_escape_string($conn,$_POST['key']); 
+
+        $search = "SELECT *from collegiate WHERE student_id = $key";
+        $result_query = mysqli_query($conn,$search);
+        while ($rows = mysqli_fetch_assoc($result_query)) {
+            $fname = $rows['first_name'];
+            $lname = $rows['last_name'];
+            $stud_id = $rows['student_id'];
+            $email = $rows['email'];
+            break;
+        }
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +50,18 @@
                         $total = $row['total'];
                         break;
                     }
-                    echo $total;
+                    if ($total ==0) {
+                        ?>
+                        <style>
+                            .count{
+                                display: none;
+                            }
+                        </style>
+                    <?php
+                    }
+                    else {
+                        echo $total;
+                    }
 
                     ?>
                 </span></a></li>
@@ -74,7 +106,10 @@
                         <td>
                             <div class="icon">
                                 <ul>
-                                    <li><button id="view" title="<?php echo $row['student_id']; ?>"><i class="fas fa-eye"></i></button></li>
+                                    <!-- <form method="post" autocomplete="off"> -->
+                                        <input type="hidden" name="key" value="<?php echo $row['student_id']; ?>">
+                                        <li><button id="view" name="view" onclick="display(<?php echo $row['student_id']; ?>)" title="<?php echo $row['student_id']; ?>"><i class="fas fa-eye"></i></button></li>
+                                    <!-- </form> -->
                                     <li><button id="forward" title="Forward"><i class="fas fa-share-square"></i></button></li>
                                     <li><button id="msg" title="Message"><i class="far fa-envelope-open"></i></button></li>
                                     <form id="form" action="delete" method="post">
@@ -94,9 +129,7 @@
             </div>
         </div>
 
-
         <!-- Form View -->
-
         <div class="view-data">
             <div class="form">
                 <div class="form_box">
@@ -106,15 +139,15 @@
                         <label for="">
                             Name:
                         </label>
-                        <input type="text" placeholder="" value="Alyssa Ave">
+                        <input type="text" placeholder="" value="<?php echo $lname.' '.$fname; ?>">
                         <label for="">
                             Student #:
                         </label>
-                        <input type="text" placeholder="" value="321321366">
+                        <input type="text" placeholder="" value="<?php echo $stud_id; ?>">
                         <label for="">
                             Email:
                         </label>
-                        <input type="text" placeholder="" value="alyssaave12@gmail.com">
+                        <input type="text" placeholder="" value="<?php echo $email; ?>">
                         <button id="approve"><i class="fas fa-thumbs-up"></i> Approve</button>
                         <button id="dis-approve"><i class="fas fa-thumbs-down"></i> UnApprove</button>
                     </form>
@@ -124,10 +157,23 @@
         </div>
         <!-- end of form view -->
 
-
     <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="../js/script.js"></script>
     <script type="text/javascript" src="../js/fontawesome.js"></script>
+
+
+    <script type="text/javascript">
+        
+        function display(data){
+
+            <?php  
+
+                
+
+            ?>
+        }
+
+    </script>
 
 
 </body>
