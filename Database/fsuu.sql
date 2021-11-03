@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2021 at 07:22 PM
+-- Generation Time: Nov 03, 2021 at 02:31 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -35,15 +35,6 @@ CREATE TABLE `account_type` (
   `ProfileID_fk` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `account_type`
---
-
-INSERT INTO `account_type` (`account_type_ID`, `account_type`, `account_type_approver`, `account_type_requester`, `ProfileID_fk`) VALUES
-(1, 'Admin', NULL, NULL, 3),
-(2, 'Admin', NULL, NULL, 2),
-(3, 'admin', NULL, NULL, 4);
-
 -- --------------------------------------------------------
 
 --
@@ -55,13 +46,6 @@ CREATE TABLE `address` (
   `city` char(255) DEFAULT NULL,
   `ProfileID_fk` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `address`
---
-
-INSERT INTO `address` (`addressID`, `city`, `ProfileID_fk`) VALUES
-(1, 'awd', 4);
 
 -- --------------------------------------------------------
 
@@ -110,8 +94,8 @@ CREATE TABLE `clearance_year` (
 
 CREATE TABLE `collegiate` (
   `ID` int(11) NOT NULL,
-  `student_id` int(30) NOT NULL,
-  `Course` char(50) DEFAULT NULL,
+  `student_id` bigint(80) NOT NULL,
+  `Course` varchar(255) DEFAULT NULL,
   `first_name` char(50) DEFAULT NULL,
   `middle_name` char(50) DEFAULT NULL,
   `last_name` char(50) DEFAULT NULL,
@@ -129,16 +113,39 @@ CREATE TABLE `collegiate` (
   `elementary_year` int(10) DEFAULT NULL,
   `high_school_grad` char(50) DEFAULT NULL,
   `high_school_year` int(10) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
   `Profile_fk` int(11) DEFAULT NULL,
-  `email` char(50) DEFAULT NULL
+  `email` char(50) DEFAULT NULL,
+  `date_msg` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course`
+--
+
+CREATE TABLE `course` (
+  `Course` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `collegiate`
+-- Dumping data for table `course`
 --
 
-INSERT INTO `collegiate` (`ID`, `student_id`, `Course`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `place_of_birth`, `citizenship`, `gender`, `civil_status`, `Spouse`, `home_address`, `father_name`, `mother_name`, `parent_address`, `elementary_grad`, `elementary_year`, `high_school_grad`, `high_school_year`, `Profile_fk`, `email`) VALUES
-(12, 1515, 'awjd', 'waod', 'awod', 'awopd', 'kawod', 'oawd', 'pawd', 'awid', 'aopwd', 'aopdw', 'awdop', 'awd', 'awod', 'awod', 'ad', 23, 'awd', 23, 4, 'artamay1@gmail.com');
+INSERT INTO `course` (`Course`) VALUES
+('Bachelor of Science of Arts'),
+('Bachelor of Science in Accountancy'),
+('Bachelor of Science in Elementary Education'),
+('Bachelor of Science in Secondary Education'),
+('Bachelor of Science in Business Administration'),
+('Bachelor of Science in Hospital Management'),
+('Bachelor of Science in Elementary Education'),
+('Bachelor of Science in Engineering'),
+('Bachelor of Science in Criminology'),
+('Bachelor of Science in Information Technology'),
+('Bachelor of Science in Computer Science'),
+('Bachelor of Science in Nursing');
 
 -- --------------------------------------------------------
 
@@ -158,13 +165,6 @@ CREATE TABLE `education` (
   `post_school_graduate` char(255) DEFAULT NULL,
   `Profile_fk` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `education`
---
-
-INSERT INTO `education` (`student_id`, `elementary_school_name`, `elementary_year_graduated`, `high_school_name`, `high_school_graduate`, `tertiary_school_name`, `tertiary_school_graduate`, `post_school_name`, `post_school_graduate`, `Profile_fk`) VALUES
-(1, 'awd', '231', 'awd', '23', 'awdawd', '12', 'awd', '32', 4);
 
 -- --------------------------------------------------------
 
@@ -206,22 +206,12 @@ CREATE TABLE `profile` (
   `last_name` char(255) DEFAULT NULL,
   `age` int(20) DEFAULT NULL,
   `gender` varchar(20) DEFAULT NULL,
-  `Birthdate` char(255) DEFAULT NULL,
+  `Birthdate` varchar(255) DEFAULT NULL,
   `Birthplace` char(255) DEFAULT NULL,
   `Email` char(255) DEFAULT NULL,
   `contact` int(11) DEFAULT NULL,
-  `password` char(255) DEFAULT NULL
+  `url_img` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `profile`
---
-
-INSERT INTO `profile` (`ProfileID`, `first_name`, `middle_name`, `last_name`, `age`, `gender`, `Birthdate`, `Birthplace`, `Email`, `contact`, `password`) VALUES
-(1, '', 'd', '', 23, 'dw', 'd', 'd', '', 2, ''),
-(2, 'GEORGIE', 'dw', 'RECABO', 23, 'd', 'a', 'a', 'georgie.recabo@urios.edu.ph', 21, ''),
-(3, 'Alyssa', 'Pancipanci', 'Ave', 21, 'Female', 'April 17 2000', 'Manggagoy', 'alyssaave17@gmail.com', 123, ''),
-(4, 'Georgie', 'dawd', 'Recabo', 21, 'Male', 'awd', 'awd', 'artamay1@gmail.com', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -236,14 +226,6 @@ CREATE TABLE `status_form` (
   `email` char(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `status_form`
---
-
-INSERT INTO `status_form` (`id`, `status`, `Profile_fk`, `email`) VALUES
-(6, 4, 4, 'artamay1@gmail.com'),
-(7, 4, 4, 'artamay1@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -252,20 +234,14 @@ INSERT INTO `status_form` (`id`, `status`, `Profile_fk`, `email`) VALUES
 
 CREATE TABLE `student` (
   `StudentID` int(11) NOT NULL,
-  `course` char(255) DEFAULT NULL,
+  `course` varchar(255) DEFAULT NULL,
+  `Student_id` bigint(100) DEFAULT NULL,
   `Year` int(20) DEFAULT NULL,
   `father_name` char(255) DEFAULT NULL,
   `mother_name` char(255) DEFAULT NULL,
-  `parent_address` char(50) NOT NULL,
+  `parent_address` char(50) DEFAULT NULL,
   `ProfileID_fk` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`StudentID`, `course`, `Year`, `father_name`, `mother_name`, `parent_address`, `ProfileID_fk`) VALUES
-(1, 'BSIT', 2013, 'awd', 'awd', 'awd', 4);
 
 --
 -- Indexes for dumped tables
@@ -363,13 +339,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `account_type`
 --
 ALTER TABLE `account_type`
-  MODIFY `account_type_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `account_type_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `addressID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `addressID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `attachments`
@@ -393,13 +369,13 @@ ALTER TABLE `clearance_year`
 -- AUTO_INCREMENT for table `collegiate`
 --
 ALTER TABLE `collegiate`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -417,19 +393,19 @@ ALTER TABLE `office`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `ProfileID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ProfileID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `status_form`
 --
 ALTER TABLE `status_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
