@@ -19,5 +19,14 @@ $(document).ready(function(){
 		$('#up').toggleClass('rotate');
 	});
 	
+	$(document).on('click', '#google', function(event) {
+		event.preventDefault();
+		$('.modal').addClass('bg-active');
+	});
+
+	$(document).on('click', '#close', function(event) {
+		event.preventDefault();
+		$('.modal').removeClass('bg-active');
+	});
 	
 });

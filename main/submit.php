@@ -45,19 +45,19 @@
 			exit();
 		}
 		else{
-				$status_form = "SELECT email from status_form WHERE email = '$email'";
-				$result = mysqli_query($conn,$status_form);
-				if (mysqli_num_rows($result) > 0) {
-					header("location: user?already=submitted");
-					exit();
-				}
-				else{
+				// $status_form = "SELECT email from status_form WHERE email = '$email'";
+				// $result = mysqli_query($conn,$status_form);
+				// if (mysqli_num_rows($result) > 0) {
+				// 	header("location: user?already=submitted");
+				// 	exit();
+				// }
+				// else{
 					$status_account =4;
 					$update = "INSERT INTO status_form(status,Profile_fk,email) VALUES ($status_account,$pk,'$email')";
 					if (mysqli_query($conn,$update) === TRUE) {
-						$insert = "INSERT INTO collegiate(student_id,Course,first_name,middle_name,last_name,date_of_birth,place_of_birth,citizenship,gender,civil_status,Spouse,home_address,father_name,mother_name,parent_address,elementary_grad,elementary_year,high_school_grad,high_school_year,Profile_fk,email) VALUES ($id_num,'$course','$fname','$mname','$lname','$birthdate','$place_birth','$citizen','$gender','$cstatus','$spouse','$home_address','$father_name','$mother_name','$parent_address','$eschool',$eyear,'$hschool',$hyear,$pk,'$email')";
+						$insert = "INSERT INTO collegiate(student_id,Course,first_name,middle_name,last_name,date_of_birth,place_of_birth,citizenship,gender,civil_status,Spouse,home_address,father_name,mother_name,parent_address,elementary_grad,elementary_year,high_school_grad,high_school_year,Profile_fk,email,date_msg) VALUES ($id_num,'$course','$fname','$mname','$lname','$birthdate','$place_birth','$citizen','$gender','$cstatus','$spouse','$home_address','$father_name','$mother_name','$parent_address','$eschool',$eyear,'$hschool',$hyear,$pk,'$email',NOW())";
 						if (mysqli_query($conn,$insert) === TRUE) {
-							header("location: user?form=submitted");
+							header("location: temporary?form=submitted");
 							exit();
 						}
 						else{
@@ -69,7 +69,7 @@
 						header("location: user?form=failed");
 						exit();
 					}
-				}
+				
 			
 		}
 	}

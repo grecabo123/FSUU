@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="css/fsuu.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -28,9 +29,8 @@
                 </div>
                 <div class="list">
                     <ul>
-                        <li><a id="home" href="#">home</a></li>
+                   
                         <li><a href="http://www.urios.edu.ph/index.php/en/">fsuu website</a></li>
-                        <li><a href="form">sign up</a></li>
                         <!-- <li><a href="fsuu">Fsuu</a></li> -->
                     </ul>
                 </div>
@@ -57,18 +57,12 @@
                 <div class="login">
                     <section>
                         <div class="form">
-                             <form action="" method="post" >
-                            <center><span>login</span></center>
-                            <input type="text" placeholder="Email" name="email" autocomplete="off" autocomplete="off">
-                            <input type="password" placeholder="Password" name="pass" autocomplete="off" autocomplete="off">
-                            <button type="submit" name="login">Sign In</button>
-                            
-                        </form>
-                          <?php  
+                        <!--   <?php  
                             require_once 'google/config.php';
                        ?>
-
-                       <button id="google" onclick="window.location= '<?php echo $login_url ?>';"><i class="fab fa-google" id="google_icon"></i>&nbsp&nbspgoogle</button>
+ -->
+                        <button id="google"><i class="fab fa-google" id="google_icon"></i> Google</button>
+                       <!-- <button id="google" onclick="window.location= '<?php echo $login_url ?>';"><i class="fab fa-google" id="google_icon"></i>&nbsp&nbspgoogle</button> -->
                         </div>
                     </section>
                 </div>
@@ -84,38 +78,9 @@
             <br>
             <br>
             <br>
-            
-           <!--  <div class="box-section">
-                <div class="box-text">
-                    
-                    <h3>APPLICATION FOR GRADUATION</h3>
-                    <h4>Graduates & Collegiate Course</h4>
-                    <p>Requirement needed:</p>
-                    <p><b>I</b>. Duly signed Graduation Application Clearance Form;</p>
-                    <p><b>II</b>. Signed Advance Grade Slip(Summer AY 2020-2021) with complete grades printed from your OPIS account (portrait format);and</p>
-                    <p><b>III</b>. Evaluation Sheet endorsed by your Program Dean(for those who were able to submit their evaluation sheet during Enrollment). </p>
-                    <p>Above document should be properly placed in long thick brown envelope with a small black binder/paper clip (c/o FSUU Bookstore)</p>
-                    <p>Upon submission of the mentioned documents, please include a documentary stamp worth P30.00 for your diploma(c/o BIR Office)</p>
-                    <br>
-                    <br>
-                    <h3>UNIVERSITY CLEARANCE</h3>
-                    <h4>Teaching Personnel</h4>
-                    <h4>Non-Teaching Personnel</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur at vitae optio officiis quod, esse accusamus expedita facere quas veritatis cupiditate dicta quo enim culpa deleniti odit officia soluta mollitia..</p>
-                    <br>
-                    <br>
-                    <h3>Retirement/Separation Clearance</h3>
-                    <h4>Teaching Personnel</h4>
-                    <h4>Non-Teaching Personnel</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quasi quaerat ipsum impedit quam quod placeat facere laudantium, veritatis eveniet ipsam deleniti obcaecati iusto, corporis? Commodi quibusdam possimus, animi optio.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div> -->
-  <!--   end of section
- -->
-    <!-- footer -->
+
+
+        
 
     <div class="footer">
         <footer>
@@ -142,12 +107,28 @@
             </div>
         </footer>
     </div>
-
     <!-- end of footer -->
 
-    <script type="text/javascript" src="js/function.js">
-        
-    </script>
-    
+     <div class="modal">
+        <section>
+            <center><h3>Login</h3></center>
+            <div class="form">
+                <?php  
+                    require_once 'google/config.php';
+                ?>
+                <center><button onclick="window.location= '<?php echo $login_url ?>';">User</button></center>
+            </div>
+            <div class="admin">
+                <?php  
+                     require_once 'google/config_admin.php';
+                ?>
+                <center><button onclick="window.location= '<?php echo $login ?>';">Admin</button></center>
+            </div>
+            <span id="close"><img src="icon/times-solid.svg" alt="Icon" width="20" height="20"></span>
+        </section>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,22 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html{
+	height: 100%;
+
+}
+body{
+	width: 100%;
+}
+header{
+	background-color: #131949;
+	padding: 10px 20px;
+	width: 100%;
+}
+.head a{
+	color: white;
+	font-size: 18px;
+	text-decoration: none;
+}

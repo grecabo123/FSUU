@@ -87,6 +87,9 @@ form{
 .form-grad,.form-grad-course{
 	display: none;
 }
+.form-grad.show,.form-grad-course.show{
+	display: block;
+}
 .graduate-form,.title-form{
 	display: flex;
 	justify-content: center;

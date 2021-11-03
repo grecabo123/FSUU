@@ -1,0 +1,158 @@
+#bell{
+	position: relative;
+}
+.noti,.employee-notification{
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	padding: 0px 7px;
+	font-size: 14px;
+	border-radius: 50%;
+	background-color: red;
+	color: white;
+	box-shadow: 1px 1px 4px black;
+}
+button{
+	background-color: transparent;
+	border: none;
+	width: 20px;
+}
+#beel{
+	font-size: 23px;
+	cursor: pointer;
+}
+#report{
+	position: relative;
+}
+.msg{
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background-color: rgb(0,0,0,0.5);
+	visibility: hidden;
+	opacity: 0;
+}
+.bg-active{
+	visibility: visible;
+	opacity: 1;
+}
+.msg section{
+	position: relative;
+	border-radius: 10px;
+	width: 800px;
+	max-width: 100%;
+	height: 600px;
+	background-color: white;
+	/*min-height: 300px;*/
+	overflow: auto;
+}
+.color{
+	background-color: #131949;
+	width: 100%;
+	padding: 20px 0px;
+	/*line-height: 1*/
+	border-radius: 3px;
+}
+.color span{
+	color: white;
+	font-size: 17px;
+	font-family: 'Poppins', sans-serif;
+}
+#close_msg{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+.center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.box_txt{
+	/*overflow-y: scroll;*/
+	padding: 10px 0px;
+	width: 700px;
+	max-width: 100%;
+}
+.box_txt ul li{
+	list-style: none;
+	cursor: pointer;
+}
+.box_txt p{
+	font-family: 'Poppins', sans-serif;
+	margin: 5px 0px;
+	font-size: 15px;
+}
+#click{
+	display: none;
+}
+.data{
+	display: none;
+}
+
+.table{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.table_size{
+	position: relative;
+	width: 1000px;
+	max-width: 100%;
+	height: auto;
+	padding: 20px;
+}
+table{
+	/*border: 0.4px solid gray;*/
+}
+#head{
+	background-color: #2C2A2A;
+	color: white;
+}
+th{
+	font-family: 'Poppins', sans-serif;
+}
+th,td{
+	border-radius: 6px;
+	border: 1px solid gray;
+}
+td{
+	font-family: 'Open Sans', sans-serif;
+}
+td,th{
+	padding: 5px 0px;
+}
+tr:nth-child(odd){
+	background-color: #ECE2E0;
+}
+#btn li{
+	display: inline-block;
+	margin: 0px 10px;
+}
+#btn li button{
+	cursor: pointer;
+	width: 40px;
+	padding: 6px 10px;
+	/*background-color: red;*/
+}
+#forward{
+	background-color: #5790cb;
+	border-radius: 6px;
+}
+#delete{
+	background-color: #d96666;
+	border-radius: 6px;
+}
+#close_tbl{
+	position: absolute;
+	top: 10px;
+	right: 5px;
+	cursor: pointer;
+}

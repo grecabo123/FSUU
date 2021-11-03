@@ -20,111 +20,92 @@
     }
 
 ?>
-
 <?php  
     
     function Search_data($user_id){
         require 'connector/connect.php';
-        $all_data_tbl = "SELECT p.ProfileID, p.first_name,p.middle_name,p.last_name,p.age,p.gender,p.Birthdate,p.Birthplace,p.Email,p.contact,adr.city,stu.course,stu.father_name,stu.mother_name,stu.parent_address,stu.StudentID,e.elementary_school_name,e.elementary_year_graduated,e.high_school_graduate,e.high_school_name,e.post_school_graduate,e.post_school_name,e.tertiary_school_graduate,e.tertiary_school_name from profile as p JOIN address as adr ON adr.ProfileID_fk = p.ProfileID JOIN student as stu ON stu.ProfileID_fk = p.ProfileID JOIN education as e ON e.Profile_fk = p.ProfileID WHERE p.ProfileID = $user_id";
+        $all_data_tbl = "SELECT p.ProfileID,p.contact,p.first_name,p.middle_name,p.last_name,p.url_img,p.Birthdate,p.Birthplace,p.Email,a.city,b.file_name,b.file_link,b.attachment_type,b.file_directory,c.status_type,e.department,e.person_position,stu.Student_id,stu.father_name,stu.mother_name,stu.parent_address,stu.course from profile as p JOIN address as a ON a.ProfileID_fk = p.ProfileID JOIN attachments as b ON b.ProfileID_fk = p.ProfileID JOIN clearance_status as c ON c.ProfileID_fk = p.ProfileID JOIN employee as e ON e.ProfileID_fk = p.ProfileID JOIN student as stu ON stu.ProfileID_fk = p.ProfileID  WHERE p.ProfileID = $user_id";
 
             $result = mysqli_query($conn,$all_data_tbl);
             while ($row = mysqli_fetch_assoc($result)) {
-                $user_id = $row['ProfileID'];
+             	$user_id = $row['ProfileID'];
+             	$user_email = $row['Email'];
                 $user_fname = $row['first_name'];
                 $user_mname = $row['middle_name'];
                 $user_lname = $row['last_name'];
-                $user_age = $row['age'];
-                $user_gender = $row['gender'];
-                $user_Birthdate = $row['Birthdate'];
-                $user_Birthplace = $row['Birthplace'];
-                $user_email = $row['Email'];
                 $user_contact = $row['contact'];
                 $user_city = $row['city'];
-                $user_course = $row['course'];
-                // $user_Year = $row['Year'];
+                $user_file_name = $row['file_name'];
+                $user_file_link = $row['file_link'];
+                $user_attachment_type = $row['attachment_type'];
+                $user_file_directory = $row['file_directory'];
+                $user_status_type = $row['status_type'];
+                $user_department = $row['department'];
+                $user_position = $row['person_position'];
+                $user_img = $row['url_img'];
+                $user_student_id = $row['Student_id'];
                 $user_father_name = $row['father_name'];
                 $user_mother_name = $row['mother_name'];
                 $user_parent_address = $row['parent_address'];
-                $user_elementary_school_name = $row['elementary_school_name']; 
-                $user_elementary_year_graduated = $row['elementary_year_graduated']; 
-                $user_high_school_name = $row['high_school_name']; 
-                $user_high_year_graduated = $row['high_school_graduate']; 
-                $user_tertiary_school_name  = $row['tertiary_school_name'];
-                $user_tertiary_year_graduated = $row['tertiary_school_graduate'];
-                $user_post_school_name  = $row['post_school_name'];
-                $user_post_year_graduated = $row['post_school_graduate']; 
-                All_data($user_id,$user_fname,$user_mname,$user_lname,$user_age,$user_Birthdate,$user_Birthplace,$user_email,$user_contact,$user_city,$user_course,$user_father_name,$user_mother_name,$user_parent_address,$user_elementary_school_name,$user_elementary_year_graduated,$user_high_school_name,$user_high_year_graduated,$user_tertiary_school_name,$user_tertiary_year_graduated,$user_post_school_name,$user_post_year_graduated,$user_gender);
+                $user_course = $row['course'];
+                $user_birthdate = $row['Birthdate'];
+                $user_birth_place = $row['Birthplace'];
+                All_data($user_id,$user_fname,$user_mname,$user_lname,$user_contact,$user_city,$user_file_name,$user_file_link,$user_file_directory,$user_attachment_type,$user_status_type,$user_department,$user_position,$user_img,$user_student_id,$user_father_name,$user_mother_name,$user_parent_address,$user_course,$user_birthdate,$user_birth_place,$user_email);
                 break;
 
             }
     }
 
 ?>
+
 <?php  
-    function All_data($user_id,$user_fname,$user_mname,$user_lname,$user_age,$user_Birthdate,$user_Birthplace,$user_email,$user_contact,$user_city,$user_course,$user_father_name,$user_mother_name,$user_parent_address,$user_elementary_school_name,$user_elementary_year_graduated,$user_high_school_name,$user_high_year_graduated,$user_tertiary_school_name,$user_tertiary_year_graduated,$user_post_school_name,$user_post_year_graduated,$user_gender){
+    function All_data($user_id,$user_fname,$user_mname,$user_lname,$user_contact,$user_city,$user_file_name,$user_file_link,$user_file_directory,$user_attachment_type,$user_status_type,$user_department,$user_position,$user_img,$user_student_id,$user_father_name,$user_mother_name,$user_parent_address,$user_course,$user_birthdate,$user_birth_place,$user_email){
         ?>  
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <title><?php echo $user_fname." ".$user_lname; ?></title>
-                <link rel="stylesheet" href="css/user.css">
-                <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+			<!DOCTYPE html>
+			<html>
+			<head>
+			    <meta charset="utf-8">
+			    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+			    <title><?php echo $user_fname. " ".$user_lname; ?></title>
+			    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+			    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+			    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+			    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+			    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+			    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+			    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
                 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
                 <script type="text/javascript" src="js/fontawesome.js"></script>
-                <!-- <link rel="stylesheet" href="css/form_box.css"> -->
-            </head>
-            <body>
+			    <link rel="stylesheet" href="css/style.css">
+			    <link rel="stylesheet" href="css/modal.css">
+			    <link rel="stylesheet" href="css/user.css">
+			</head>
+			<body>
+			    <div id="color">
+			        <a href="temporary"><img id="logo" src="image/fsuu.png" alt="LOGO" width="250" height="70"></a>
+			        <div class="list_att">
+			            <ul>
+			                <li><img src="<?php echo $user_img; ?>" alt="" width="40" height="40" style="border-radius: 50%"> &nbsp<span style="color: white; cursor: pointer;" onclick="window.location='temporary'">Name: <?php echo $user_fname. " ".$user_lname; ?> </span></li>
+			                <li><span onclick="window.location = 'profile'"><img src="icon/user-cog-solid.svg" alt="Logo" width="20" height="20" style="cursor: pointer;" title="Account Settings"></span></li>
+			                <li><a href="logout"><img src="icon/power-off-solid.svg" alt="Icon" width="20" height="20" title="Logout"></a></li>
+			            </ul>
+			        </div>
+			    </div>
 
-            <div class="content">
-                <div class="sidebar">
-                    <a href="user" style="text-decoration: none;"><center><img src="image/1.png" alt="Logo" width="100" height="80"></center><center><span style="color: white; letter-spacing: 2px; font-size: 14px;">FATHER SATURNINO URIOS UNIVERSITY</span></center></a>
-                    <ul>
-                        <!-- <li><a href="#">Home</a></li> -->
-                        <li><a href="#">Account</a></li>
-                        <li><a id="forms" style="cursor: pointer;">Forms&nbsp <span id="up"><i class="fas fa-angle-down"></i></span></a>
-                            <div class="form-application">
-                                <ul>
-                                    <li><a id="form-grad-course" style="cursor: pointer; font-size: 14px;">Graduation Form</a></li>
-                                    <li><a id="form" style="cursor: pointer;">Collegiate Form</a></li> 
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="#">Message</a></li>
-                        <li><a href="#">Action Done</a></li>
-                        <li><a href="#">Resources</a></li>
-                        <li><a href="logout">Logout</a></li>
-                    </ul> 
-                </div>
-                <div class="main_content">
-                    <div class="header">
-                        <p><b>Name:&nbsp</b><span><?php echo $user_fname." ".$user_lname;?></span></p>
-                    </div> 
-                      <?php  
+				<!-- header -->
+			    <header>
+			        <div class="head">
+			            <div class="list">
+			                <ul>
+			                    <li><a href="#" id="form">Application Form</a></li>
+			                    <li><a href="#" id="form-grad">Fsuu Website</a></li>
+			                </ul>
+			            </div>
+			        </div>
+			    </header>
+			    <!-- end of header -->
 
-                        if (isset($_GET['form'])) {
-                            if ($_GET['form'] == "submitted") {
-                                ?>
-                                <div class="display">
-                                    <div class="submit">
-                                        <div class="submit_box">
-                                            <p>Form has been submitted</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            else if($_GET['form'] == "failed"){
-                                ?>
-                                <center><p style="color: red;font-size: 17px;">Failed to submit</p></center>
-                                <?php
-                            }
-                        }
-
-                        ?> 
-        <div class="info">
-             <!-- collegiate Form -->
-                <div class="form-grad">
+				 <div class="form-grad">
                     <div class="graduate-form">
                       <div class="box-size">
                         <form action="submit" method="post">
@@ -141,7 +122,7 @@
                         <br>
                         <div class="id-number" style="float: right;">
                             <input type="hidden" name="email" value="<?php echo $user_email; ?>">
-                            <span>ID Number: <input type="text" required name="student_number" maxlength="11"></span>
+                            <span>ID Number: <input type="text"  required name="student_number" maxlength="11" value="<?php echo $user_student_id; ?>"></span>
                         </div>
                         <br>
                         <!-- user information -->
@@ -149,7 +130,7 @@
                             <label for="">
                                 Course
                             </label>
-                            <input type="text" placeholder="Course" required name="course">
+                            <input type="text"  placeholder="Course" required name="course" value="<?php echo $user_course;; ?>">
                         </div>
                         <br>
                         <center><h3>Personal Information</h3></center>
@@ -158,19 +139,19 @@
                                 <label for="">
                                     First Name
                                 </label>
-                                <input type="text" name="fname" required>
+                                <input type="text" name="fname" required value="<?php echo $user_fname; ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
                                     Middle Name
                                 </label>
-                                <input type="text" name="mname" required>
+                                <input type="text" name="mname" required value="<?php echo $user_mname; ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
                                     Last Name
                                 </label>
-                                <input type="text" name="lname" required>
+                                <input type="text" name="lname" required value="<?php echo $user_lname; ?>">
                             </div>
                         </div>
                         <!-- <hr> -->
@@ -179,19 +160,19 @@
                                 <label for="">
                                     Date of Birth
                                 </label>
-                                <input type="text" name="birthdate" required>
+                                <input type="text" name="birthdate" required value="<?php echo $user_birthdate; ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
                                     Place of Birth
                                 </label>
-                                <input type="text" name="place_birth" required>
+                                <input type="text" name="place_birth" required value="<?php echo $user_birth_place; ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
                                     Citizenship
                                 </label>
-                                <input type="text" name="citizenship" required>
+                                <input type="text" name="citizenship" required value="<?php  ?>">
                             </div>
                         </div>
                          <div class="name">
@@ -199,13 +180,13 @@
                                 <label for="">
                                     Sex
                                 </label>
-                                <input type="text" name="gender" required>
+                                <input type="text" name="gender" required value="<?php  ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
                                     Civil Status
                                 </label>
-                                <input type="text" name="cstatus" required>
+                                <input type="text" name="cstatus" required value="<?php  ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
@@ -292,13 +273,12 @@
                                 <li><center><span>Graduate Course</span></center></li>
                             </ul>
                             </div>
-                        <div class="date">
-                            <input type="date" name="date" required>
+                        <div class="id-number" style="float: right;">
+                            <input type="hidden" name="email" value="<?php echo $user_email; ?>">
+                            <span>ID Number: <input type="text" required name="student_number" maxlength="11"></span>
                         </div>
                         <br>
-                        <div class="id-number">
-                            <span>ID Number: <input type="text" name="student_number"></span>
-                        </div>
+                        <br>
                         <!-- user information -->
                         <div class="user-info">
                             <label for="">
@@ -380,19 +360,19 @@
                                 <label for="">
                                    Father's Name
                                 </label>
-                                <input type="text" name="nam" required>
+                                <input type="text" name="nam" required value="<?php echo $user_father_name; ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
                                     Mother's Name
                                 </label>
-                                <input type="text" name="nam" required>
+                                <input type="text" name="nam" required value="<?php echo $user_mother_name; ?>">
                             </div>
                             <div class="user-info">
                                 <label for="">
                                    Parent Address
                                 </label>
-                                <input type="text" name="nam" required>
+                                <input type="text" name="nam" required value="<?php echo $user_parent_address; ?>">
                             </div>
                         </div>
                         <br>
@@ -461,17 +441,12 @@
             </div>
         </div>
 
-        </div>
-                  
-      
+			    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+			    <script type="text/javascript" src="js/load.js"></script>
+
+			</body>
+			</html>
         <?php
     }
-
-
 ?>
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
 
-
-</body>
-</html>
