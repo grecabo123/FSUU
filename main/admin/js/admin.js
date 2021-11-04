@@ -39,8 +39,10 @@ $(document).ready(function() {
 					$('.student').text(xyra['student_id']);
 					$('.td-name').text(xyra['last_name']+' '+xyra['first_name']+' '+xyra['middle_name']);
 					$('.list-btn').append(' <ul id="btn">'+
+						'<li><button id="view" value="'+xyra['ID']+'" title="Forward"><i class="fas fa-eye"></i></button></li>'+
                             '<li><button id="forward" value="'+xyra['Profile_fk']+'" title="Forward"><i class="fas fa-share-square"></i></button></li>'+
                             '<li><button id="delete" value="'+xyra['ID']+'" title="Forward"><i class="fas fa-trash"></i></button></li>'+
+                            '<li><button id="file" value="'+xyra['ID']+'" title="Forward"><i class="fas fa-file-alt"></i></button></li>'+
                         '</ul>');
 				});
 			}
@@ -52,10 +54,21 @@ $(document).ready(function() {
 		var key = $('#forward').val();
 		alert(key);
 	});
+
 	$(document).on('click', '#delete', function(event) {
 		event.preventDefault();
 		var delete_key = $('#delete').val();
-		console.log(delete_key);
+		$.ajax({
+			url: "../delete",
+			method: "POST",
+			data: {
+				'delete' : true,
+				delete_key: delete_key,
+			},
+			success:function(delete_data){
+				
+			}
+		})
 		/* Act on the event */
 	});
 
@@ -72,6 +85,7 @@ $(document).ready(function() {
 	$(document).on('click', '#report', function(event) {
 		event.preventDefault();
 		$('.msg').addClass('bg-active');
+		$('.data').toggleClass('.hide');
 		/* Act on the event */
 	});
 	$(document).on('click', '#close_msg', function(event) {
@@ -86,6 +100,7 @@ $(document).ready(function() {
 
 	$(document).on('click', '#report', function(event) {
 		$('.noti').html('');
+		$('.data').toggleClass('.hide');
 		$('.msg').addClass('bg-active');
 		notification_load('yes');
 		/* Act on the event */

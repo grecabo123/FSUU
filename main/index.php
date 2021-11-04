@@ -111,7 +111,8 @@
 
      <div class="modal">
         <section>
-            <center><h3>Login</h3></center>
+             <center><span id="login">Login</span></center>
+            <center><img src="image/1.png" alt="logo" width="160" height="120" ></center>
             <div class="form">
                 <?php  
                     require_once 'google/config.php';

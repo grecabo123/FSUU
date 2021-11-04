@@ -121,6 +121,7 @@
             </div>
             </div>
             <span id="close_msg"><img src="../icon/times-solid.svg" alt="" width="20" height="20"></span>
+            <span id="sell_all"><img src="../icon/seeall.png" alt="" width="30" height="30"></span>
         </section>
     </div>
     <!-- end of msg box -->
@@ -134,7 +135,7 @@
                 </tr>
                 <tr>
                     <th>ID Number</th>
-                    <th>Name of Person</th>
+                    <th>Name of Requester</th>
                     <th>Action</th>
                 </tr>
                 <tr align="center" class="data-result">

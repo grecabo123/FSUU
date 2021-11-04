@@ -75,10 +75,14 @@
 			    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 			    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
                 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
                 <script type="text/javascript" src="js/fontawesome.js"></script>
 			    <link rel="stylesheet" href="css/style.css">
 			    <link rel="stylesheet" href="css/modal.css">
 			    <link rel="stylesheet" href="css/user.css">
+                <link rel="stylesheet" href="css/profile.css">
+            <link rel="stylesheet" href="css/form.css">
+                <link rel="stylesheet" href="admin/css/content.css">
 			</head>
 			<body>
 			    <div id="color">
@@ -86,7 +90,7 @@
 			        <div class="list_att">
 			            <ul>
 			                <li><img src="<?php echo $user_img; ?>" alt="" width="40" height="40" style="border-radius: 50%"> &nbsp<span style="color: white; cursor: pointer;" onclick="window.location='temporary'">Name: <?php echo $user_fname. " ".$user_lname; ?> </span></li>
-			                <li><span onclick="window.location = 'profile'"><img src="icon/user-cog-solid.svg" alt="Logo" width="20" height="20" style="cursor: pointer;" title="Account Settings"></span></li>
+			                
 			                <li><a href="logout"><img src="icon/power-off-solid.svg" alt="Icon" width="20" height="20" title="Logout"></a></li>
 			            </ul>
 			        </div>
@@ -97,13 +101,133 @@
 			        <div class="head">
 			            <div class="list">
 			                <ul>
-			                    <li><a href="#" id="form">Application Form</a></li>
-			                    <li><a href="#" id="form-grad">Fsuu Website</a></li>
+                                <li><a href="#" id="account-info">My Account</a></li>
+                                <li><a href="#" id="form">Collegiate Form</a></li>
+			                    <li><a href="#" id="form-grad">Graduate Form</a></li>
+			                    <li><a href="http://www.urios.edu.ph/index.php/en/" id="">Fsuu Website</a></li>
 			                </ul>
 			            </div>
 			        </div>
 			    </header>
 			    <!-- end of header -->
+
+                    <!-- content -->
+
+        <div class="none">
+            <div class="content">
+            <div class="content-size">
+                <div class="box-content">
+                    <!-- <div class="calendar">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing, elit. Dolores sit voluptatem sint magnam fuga, sunt sapiente magni dolore blanditiis quam aut, consectetur enim quo fugit ducimus, maxime deleniti? Magnam, ducimus.</p>
+                    </div> -->
+                    <div class="profile">
+                        <div class="form">
+                <div class="box">
+                    <form action="update" method="post" autocomplete="off">
+                        <center><span>Personal Information</span></center>
+                        <div class="id">
+                            <input type="text" placeholder="Student ID" name="stud_id">
+                            <input type="hidden" placeholder="id" name="key" value="<?php echo $id; ?>">
+                        </div>
+                        <div class="id">
+                        <?php  
+                        require 'connector/connect.php';
+                        $sql = "SELECT *FROM course";
+                        $result = mysqli_query($conn,$sql);
+                        if (mysqli_num_rows($result) > 0) {
+                            echo "<select id='gender' name='course'>";
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo  "<option value=".$row['Course'].">".$row['Course']. "</option>";
+                            }
+                            echo "</select>";
+                        }
+                    ?>
+                        </div>
+                        <div class="fname">
+                            <div class="name">
+                                <input type="text" placeholder="First Name" name="fname" value="<?php echo $user_fname; ?>">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Middle Name" name="mname" value="<?php echo $user_mname; ?>">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Last Name" name="lname" value="<?php echo $user_lname; ?>">
+                            </div>  
+                        </div>
+                        <div class="fname">
+                            <div class="name">
+                                <input type="text" placeholder="Year Level" name="year" value="<?php  ?>">
+                                
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Gender" name="sex">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Birthdate" name="birthdate">
+                            </div>  
+                        </div>
+                        <div class="fname">
+                            <div class="name">
+                                <input type="text" placeholder="Birthplace" name="birth_place">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Age" name="age">
+                                
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Address" name="adr">
+                            </div>  
+                        </div>
+                        <div class="fname">
+                            <div class="name">
+                                <input type="text" placeholder="Civil Status" name="status">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Email" readonly value="<?php echo $user_email; ?>">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Home Address" name="home_adr">
+                            </div>  
+                        </div>
+                        <div class="fname">
+                            <div class="name">
+                                <input type="text" placeholder="Name of Spouse" name="spouse">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Citizenship" name="citizen">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Contact" name="contact">
+                            </div>  
+                        </div>
+                        <div class="fname">
+                            <div class="name">
+                                <input type="text" placeholder="Father Name" name="father_name">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Mother Name" name="mother_name">
+                            </div>
+                            <div class="name">
+                                <input type="text" placeholder="Parent Address" name="parent_adr">
+                            </div>  
+                        </div>
+                        <div class="btn">
+                            <center><button type="submit" name="update">Update</button></center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    <!-- end of content -->
+
+
+
 
 				 <div class="form-grad">
                     <div class="graduate-form">

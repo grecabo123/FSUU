@@ -17,7 +17,8 @@
 			    $output .='
 			    <li id="display_form">
 			    	<button id="click" value="'.$row['ID'].'">'.$row['ID'].'</button>
-			    	<strong>Name: '.$row['first_name'].'</strong><br>
+			    	<strong>Name: '.$row['first_name'].' '.$row['last_name'].'</strong><br>
+			    	<span>Submitted: Application form</span><br>
 			    	<small><em>Date: '.$row['date_msg'].'</em></small>
 			    	</li>
 			    	<hr>
